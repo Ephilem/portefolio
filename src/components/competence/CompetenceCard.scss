@@ -1,0 +1,15 @@
+.bg-novice {
+  @apply bg-error;
+}
+
+.bg-intermediate {
+  @apply bg-warning;
+}
+
+.bg-advanced {
+  @apply bg-success;
+}
+
+.bg-expert {
+  @apply bg-info;
+}

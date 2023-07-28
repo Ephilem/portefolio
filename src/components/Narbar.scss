@@ -1,0 +1,15 @@
+.navbar__item-wrapper {
+    position: relative;
+    span {
+        position: absolute;
+        display: inline-block;
+        width: 30px;
+        /*visibility: hidden;*/
+        height: 5px;
+        bottom: 0;
+    }
+}
+
+.navbar {
+    z-index: 999;
+}
