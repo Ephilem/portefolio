@@ -1,28 +1,19 @@
-import React, {useEffect} from "react";
-import {useScroll} from "@react-spring/web";
-import {Parallax, ParallaxLayer} from "@react-spring/parallax";
+import React, {ForwardRefRenderFunction} from "react";
+import {Experience} from "../../model/Experience.tsx";
+import {Timeline} from "../../components/Timeline.tsx";
+import {useExperienceData} from "../../DataHooks.tsx";
 
-export function TimelineSection() {
 
-    const { scrollYProgress } = useScroll();
+const TimelineSection: ForwardRefRenderFunction<HTMLDivElement> = (_, ref) => {
 
-    useEffect(() => {
-
-    }, [scrollYProgress]);
+    const data: Experience[] = useExperienceData();
 
     return (
-        <div className="h-screen w-full">
-            <h3 className="home__title md:text-7xl text-6xl sticky mt-10">Expériences</h3>
-            <div className="flex items-center w-fit">
-                <Parallax pages={2} horizontal className="flex">
-                    <ParallaxLayer offset={0} speed={0.5} className="">
-                        <div className="w-screen h-32 bg-error" />
-                    </ParallaxLayer>
-                    <ParallaxLayer offset={1} speed={0.5} className="">
-                        <div className="w-screen h-32 bg-info" />
-                    </ParallaxLayer>
-                </Parallax>
-            </div>
+        <div id="exp" ref={ref} className="w-full">
+            <h3 className="home__title md:text-7xl text-6xl mt-10 top-10">Expériences</h3>
+            <Timeline data={data} />
         </div>
     );
 }
+
+export default React.forwardRef(TimelineSection)

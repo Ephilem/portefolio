@@ -1,7 +1,7 @@
 
 import {useSpring, animated} from "@react-spring/web";
-import {CompetenceLevel, Competence} from "../../model/Competence.ts";
-import {ReactNode, useEffect, useRef, useState} from "react";
+import {Competence} from "../../model/Competence.ts";
+import {useRef, useState} from "react";
 import {CompetenceLevelDecoration} from "./CompetenceLevelDecoration.tsx";
 
 
@@ -16,12 +16,12 @@ export function CompetenceCard({comp} : CompetenceCardProps) {
     const [isFlipped, setFlipped] = useState(false);
     const [yRotation, setYRotation] = useState(0);
 
-    const container = useRef<HTMLElement | null>(null);
+    const container = useRef<HTMLDivElement | null>(null);
     const [spring, set] = useSpring(() => ({
         xys: [0, 0, 1],
         config: { mass: 5, tension: 350, friction: 80 },
         onChange: {
-            xys: ({value}) => {
+            xys: (_) => {
                 updateYRotation();
             }
         }
@@ -56,7 +56,7 @@ export function CompetenceCard({comp} : CompetenceCardProps) {
     }
 
     return (
-            <animated.div ref={container} className={`lg:w-[300px] lg:h-[300px] w-[200px] h-[200px] card shadow-xl p-4  bg-[#171212] comp-card select-none cursor-pointer
+            <animated.div ref={container} className={`lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] card shadow-xl p-4 bg-[#171212] comp-card select-none cursor-pointer
             ${yRotation > 180 ? 'rotate-45' : ''}`}
                     onMouseMove={(e) => {
                         updateTransformation(e.clientX, e.clientY, isFlipped);
@@ -68,13 +68,13 @@ export function CompetenceCard({comp} : CompetenceCardProps) {
                     style={{ transform: spring.xys.interpolate(trans)}}>
                 <CompetenceLevelDecoration  level={comp.level}  cardRotation={yRotation} />
                 <div className={`flex items-center flex-col flex-grow ${yRotation > 90 ? 'hidden' : ''}`}>
-                    <img src={comp.icon_path} alt={`Logo ${comp.name}`} className="self-center h-[100px] max-w-[175px] lg:h-[175px]"/>
+                    <img src={comp.icon_path} alt={`Logo ${comp.name}`} className="self-center h-[100px] max-w-[175px] lg:h-[100px]"/>
                     <div className="flex flex-grow items-center">
-                        <span className="font-bold text-xl lg:text-3xl flex justify-center items-center text-center font-[Kanit] w-full">{comp.name}</span>
+                        <span className="font-bold text-xl lg:text-xl flex justify-center items-center text-center font-[Kanit] w-full">{comp.name}</span>
                     </div>
                 </div>
-                <div className={`${yRotation > 270 ? '' : 'hidden'} ml-12`}>
-                    <span className="font-bold text-2xl font-[Kanit] w-full">{comp.name}</span>
+                <div className={`${yRotation > 270 ? '' : 'hidden'} ml-8`}>
+                    <span className="font-bold text-lg font-[Kanit] w-full">{comp.name}</span>
                     <p className="text-xs">{comp.description}</p>
                 </div>
             </animated.div>

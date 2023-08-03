@@ -1,0 +1,47 @@
+.contact-tile {
+  position: relative;
+}
+
+.contact-tile:before {
+  background-color: rgb(15,15,15);
+  content: "";
+  inset: 0.5px;
+  position: absolute;
+}
+
+.grid-background {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  user-select: none;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.hover-effect {
+
+  &:before {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+    background: radial-gradient(
+                    800px circle at calc(var(--mouse-x)*1px) calc(var(--mouse-y)*1px),
+                    rgba(29,185,144, 0.16),
+                    rgba(30,184,84, 0.16),
+                    transparent 60%
+    );
+  }
+  &:hover:before {
+    opacity: 1;
+  }
+}

@@ -23,6 +23,7 @@
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "^20.4.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

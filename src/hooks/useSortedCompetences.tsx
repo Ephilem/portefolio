@@ -1,4 +1,4 @@
-import {useState, useEffect, useMemo} from 'react';
+import {useMemo} from 'react';
 import { Competence, CompetenceLevel } from '../model/Competence';
 
 type UseSortedCompetencesInput = Competence[];
