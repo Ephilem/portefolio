@@ -26,8 +26,8 @@ export function CompetenceLevelDecoration({level, cardRotation} : CompetenceLeve
 
     return (
         <div className={` flex justify-center items-center
-        fixed z-[-1] w-5 lg:w-5 h-16 top-[-10px]  bg-${color}
-        ${cardRotation > 90 ? 'left-[15px] h-[106%]' : `right-[15px] h-16 after:block after:top-10 after:absolute after:w-8 lg:after:w-8 lg:after:h-8 after:h-8 after:rotate-45 after:bg-[#171212]`}`}>
+        fixed z-[-1] w-5 lg:w-5 h-16 top-[-6px]  bg-${color}
+        ${cardRotation > 90 ? 'left-[15px] h-[105%]' : `right-[15px] h-16 after:block after:top-10 after:absolute after:w-8 lg:after:w-8 lg:after:h-8 after:h-8 after:rotate-45 after:bg-[#171212]`}`}>
             {cardRotation > 270 ? <div style={{fontVariant: "all-petite-caps"}} className="h-[75px] text-center rotate-[-90deg] text-4xl lg:text-4xl lg:ml-7 ml-7 after:inline-block font-bold font-[Kanit] text-[#171212]">{level}</div> : <></>}
         </div>
     );

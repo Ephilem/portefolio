@@ -74,8 +74,8 @@ export function CompetenceCard({comp} : CompetenceCardProps) {
                     </div>
                 </div>
                 <div className={`${yRotation > 270 ? '' : 'hidden'} ml-8`}>
-                    <span className="font-bold text-lg font-[Kanit] w-full">{comp.name}</span>
-                    <p className="text-xs">{comp.description}</p>
+                    <span className="font-bold text-[1em] font-[Kanit] w-full leading-tight">{comp.name}</span>
+                    <p className="lg:text-[0.9em] text-xs">{comp.description}</p>
                 </div>
             </animated.div>
     );
