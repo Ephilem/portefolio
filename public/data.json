@@ -91,6 +91,15 @@
       "repo_url": "https://github.com/Ephilem/PacMan",
       "demo_url": null,
       "for": null
+    },
+    {
+      "title": "zearena.net",
+      "description": "Serveur Pterodactyl que je maintiens permettant de gérer des conteneur Docker",
+      "tags": ["SYSADMIN", "DOCKER", "NGINX"],
+      "image": null,
+      "repo_url": null,
+      "demo_url": null,
+      "for": null
     }
   ]
 }

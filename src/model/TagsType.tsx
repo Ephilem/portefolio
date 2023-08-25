@@ -1,8 +1,9 @@
 import {cloneElement, ReactElement} from "react";
 import {Tags} from "../components/Tags.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faJava, faReact, faPython} from "@fortawesome/free-brands-svg-icons";
-import {faCube, faHammer} from "@fortawesome/free-solid-svg-icons";
+import {faJava, faReact, faPython, faDocker} from "@fortawesome/free-brands-svg-icons";
+import {faCube, faHammer, faServer} from "@fortawesome/free-solid-svg-icons";
+
 
 export enum TagsType {
     JAVA = "JAVA",
@@ -10,6 +11,8 @@ export enum TagsType {
     REACTJS = "REACTJS",
     WIP = "WIP",
     PYTHON = "PYTHON",
+    DOCKER = "DOCKER",
+    SYSADMIN = "SYSADMIN",
 }
 
 const tagsMaps = new Map<TagsType, ReactElement<any, any>> ([
@@ -18,6 +21,8 @@ const tagsMaps = new Map<TagsType, ReactElement<any, any>> ([
     [TagsType.PYTHON, <Tags tag="Python" color="#FFD63A" icon={<FontAwesomeIcon icon={faPython} size="sm" />} />],
     [TagsType.SPIGOT, <Tags tag="Spigot" color="#D47D1B" icon={<FontAwesomeIcon icon={faCube} size="sm" />} />],
     [TagsType.WIP, <Tags tag="W.I.P" color="lightgray" icon={<FontAwesomeIcon icon={faHammer} size="sm" />} />],
+    [TagsType.DOCKER, <Tags tag="Docker" color="#0DB7ED" icon={<FontAwesomeIcon icon={faDocker} size="sm" />} />],
+    [TagsType.SYSADMIN, <Tags tag="SysAdmin" color="#F85252" icon={<FontAwesomeIcon icon={faServer} size="sm" />} />],
 ])
 
 
