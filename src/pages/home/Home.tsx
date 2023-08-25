@@ -65,6 +65,7 @@ export function Home({ onSectionChange}: HomeProps) {
             <div className="home__transition-1 h-[20rem]" />
             <ProjectSection ref={projectSection} />
             <TimelineSection ref={timelineSection} />
+            <div className='h-[10vh]' />
             <ContactSection ref={contactSection} />
             <footer className="w-full block ">
                 <div className="bg-[rgb(5,5,5)] h-[2rem] flex items-center justify-center text-white text-[10px]">
