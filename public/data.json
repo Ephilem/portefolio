@@ -1,15 +1,27 @@
 {
   "competences": [
     {
+      "name": "Bukkit API",
+      "level": "ADVANCED",
+      "description": "Appris en auto-didacte, je peux réaliser des plugins pour des serveurs Minecraft",
+      "icon_path": "spigot.svg"
+    },
+    {
+      "name": "Bash",
+      "description": "Appris à l'IUT, je peut utiliser un shell et créer des simples programmes",
+      "level": "BEGINNER",
+      "icon_path": "bash.svg"
+    },
+    {
       "name": "ReactJs",
       "level": "BEGINNER",
-      "description": "Appris en auto-didacte, je peut créer des sites simple et dynamique",
+      "description": "Appris en auto-didacte, je peux créer des sites simples et dynamiques",
       "icon_path": "react_logo.svg"
     },
     {
       "name": "Java",
       "level": "INTERMEDIATE",
-      "description": "Commencer en auto-didacte à l'âge de 14 ans à l'aide de Minecraft et appronfondie à l'IUT, j'ai pu m'habituer au paradigme de la programmation orienté objet",
+      "description": "J'ai commencé à apprendre en auto-didacte à l'âge de 14 ans à l'aide de Minecraft et j'ai pu appronfondir à l'IUT. Cela m'a permis de m'approprier le paradigme de Programmation Orientée Objet",
       "icon_path": "java_logo.svg"
     },
     {
@@ -27,7 +39,7 @@
     {
       "name": "Python",
       "level": "INTERMEDIATE",
-      "description": "Appris en NSI, je l'ai utilisée pour créer des petit jeu et faire des mathématiques & gestion de données",
+      "description": "Appris en NSI, je l'ai utilisé pour créer des jeux simples et appliquer des concepts mathématiques et effectuer de la gestion de données",
       "icon_path": "python.svg"
     }
   ],
@@ -35,18 +47,18 @@
     {
       "date": "Été 2022",
       "title": "Cité des Vestiges",
-      "description": "Développeur Java pour un évènement sur Minecraft organisé par Vartac, j'était responsable de développer les programmes demandés par le client pour le bon fonctionnement de l'évènement."
+      "description": "Développeur Java pour un évènement sur Minecraft organisé par Vartac, j'avais la responsabilité de développer les programmes demandés par le client pour le bon fonctionnement de l'évènement."
     },
     {
       "date": "Automne 2022",
       "title": "Développeur bénévole",
-      "description": "Développeur Java pour créer des jeux sur Minecraft bénévolement pour animé la communauté française de Minecraft"
+      "description": "Développeur Java pour créer des jeux sur Minecraft bénévolement pour animer la communauté française de Minecraft"
     }
   ],
   "projects": [
     {
       "title": "Fight for Christmas",
-      "description": "Projet fait pour Minecraft.fr bénévolement, c'était une des premières mission que j'ai fait avec eux.",
+      "description": "Projet fait pour Minecraft.fr bénévolement, c'était une des premières missions que j'ai faites avec eux.",
       "tags": ["JAVA", "SPIGOT"],
       "image": "fight_for_christmas.png",
       "repo_url": null,
@@ -55,10 +67,10 @@
     },
     {
       "title": "Portfolio",
-      "description": "Site que vous êtes en train de visiter, il est fait en ReactJs et TailwindCSS. J'ai projet de l'améliorer pour m'améliorer dans le domaine du développement Web.",
-      "tags": ["REACTJS", "WIP"],
+      "description": "Site que vous êtes en train de visiter, il est fait en ReactJs et TailwindCSS. Ceci m'a permis de m'améliorer dans le développement web avec ReactJS.",
+      "tags": ["REACTJS"],
       "image": null,
-      "repo_url": null,
+      "repo_url": "https://github.com/Ephilem/portefolio",
       "demo_url": null,
       "for": null
     },
@@ -73,7 +85,7 @@
     },
     {
       "title": "PacMac",
-      "description": "Petit jeu fait en Python avec Pygames très basique. C'était un projet a faire en NSI.",
+      "description": "Petit jeu fait en Python avec Pygame très basique. C'était un projet fait en NSI.",
       "tags": ["PYTHON"],
       "image": null,
       "repo_url": "https://github.com/Ephilem/PacMan",

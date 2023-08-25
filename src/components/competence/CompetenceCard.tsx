@@ -1,18 +1,20 @@
 
-import {useSpring, animated} from "@react-spring/web";
+import {useSpring, animated, useInView} from "@react-spring/web";
 import {Competence} from "../../model/Competence.ts";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {CompetenceLevelDecoration} from "./CompetenceLevelDecoration.tsx";
 
 
 type CompetenceCardProps = {
-    comp: Competence;
+    comp: Competence,
+    isFirst: boolean
 };
 
 const trans = (x: number, y: number, s: number) =>
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-export function CompetenceCard({comp} : CompetenceCardProps) {
+export function CompetenceCard({comp, isFirst} : CompetenceCardProps) {
+    const [wasFirstRotated, setWasFirstRotated] = useState(false);
     const [isFlipped, setFlipped] = useState(false);
     const [yRotation, setYRotation] = useState(0);
 
@@ -55,28 +57,45 @@ export function CompetenceCard({comp} : CompetenceCardProps) {
         setYRotation(spring.xys.get()[1]);
     }
 
+    // Premier carte de compétence
+    const [first, firstCompetenceCardInView] = useInView({rootMargin: "0px 0px -35% 0px"});
+
+    // Si la première carte de compétence est visible, on la fait tourner une fois
+    useEffect(() => {
+        if (first.current && firstCompetenceCardInView && isFirst && !wasFirstRotated) {
+            setFlipped(true);
+
+            const rect = first.current.getBoundingClientRect();
+
+            updateTransformation(rect.left + rect.width/2 , rect.top + rect.height/2 , true)
+            setWasFirstRotated(true)
+        }
+    }, [firstCompetenceCardInView]);
+
     return (
-            <animated.div ref={container} className={`lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] card shadow-xl p-4 bg-[#171212] comp-card select-none cursor-pointer
-            ${yRotation > 180 ? 'rotate-45' : ''}`}
-                    onMouseMove={(e) => {
-                        updateTransformation(e.clientX, e.clientY, isFlipped);
-                    }}
-                    onMouseLeave={() => set({ xys: [0, 0 + (isFlipped ? 360 : 0), 1] })}
-                    onClick={(e) => {
-                        mouseClick(e.clientX, e.clientY);
-                    }}
-                    style={{ transform: spring.xys.interpolate(trans)}}>
-                <CompetenceLevelDecoration  level={comp.level}  cardRotation={yRotation} />
-                <div className={`flex items-center flex-col flex-grow ${yRotation > 90 ? 'hidden' : ''}`}>
-                    <img src={comp.icon_path} alt={`Logo ${comp.name}`} className="self-center h-[100px] max-w-[175px] lg:h-[100px]"/>
-                    <div className="flex flex-grow items-center">
-                        <span className="font-bold text-xl lg:text-xl flex justify-center items-center text-center font-[Kanit] w-full">{comp.name}</span>
+            <div ref={first}>
+                <animated.div ref={container} className={`lg:w-[200px] lg:h-[200px] w-[200px] h-[200px] card shadow-xl p-4 bg-[#171212] comp-card select-none cursor-pointer
+                ${yRotation > 180 ? 'rotate-45' : ''}`}
+                        onMouseMove={(e) => {
+                            updateTransformation(e.clientX, e.clientY, isFlipped);
+                        }}
+                        onMouseLeave={() => set({ xys: [0, 0 + (isFlipped ? 360 : 0), 1] })}
+                        onClick={(e) => {
+                            mouseClick(e.clientX, e.clientY);
+                        }}
+                        style={{ transform: spring.xys.interpolate(trans)}}>
+                    <CompetenceLevelDecoration  level={comp.level}  cardRotation={yRotation} />
+                    <div className={`flex items-center flex-col flex-grow ${yRotation > 90 ? 'hidden' : ''}`}>
+                        <img src={comp.icon_path} alt={`Logo ${comp.name}`} className="self-center h-[100px] max-w-[175px] lg:h-[100px]"/>
+                        <div className="flex flex-grow items-center">
+                            <span className="font-bold text-xl lg:text-xl flex justify-center items-center text-center font-[Kanit] w-full">{comp.name}</span>
+                        </div>
                     </div>
-                </div>
-                <div className={`${yRotation > 270 ? '' : 'hidden'} ml-8`}>
-                    <span className="font-bold text-[1em] font-[Kanit] w-full leading-tight">{comp.name}</span>
-                    <p className="lg:text-[0.9em] text-xs">{comp.description}</p>
-                </div>
-            </animated.div>
+                    <div className={`${yRotation > 270 ? '' : 'hidden'} ml-8`}>
+                        <span className="font-bold text-[1em] font-[Kanit] w-full leading-tight">{comp.name}</span>
+                        <p className="lg:text-[0.9em] text-xs">{comp.description}</p>
+                    </div>
+                </animated.div>
+            </div>
     );
 }

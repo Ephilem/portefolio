@@ -52,10 +52,13 @@ export function Home({ onSectionChange}: HomeProps) {
             <section ref={competenceSection} id="competence" className="home__competence-section pb-12">
                 <div className="container mx-auto">
                     <h3 className="home__title md:text-7xl text-6xl">Compétences</h3>
-                    <div className="flex flex-wrap justify-evenly lg:gap-28 gap-2 gap-y-4">
-                        {sortedCompetences.map((comp, index) => {
-                            return <CompetenceCard comp={comp} key={index} />
-                        })}
+                    {/*className="flex flex-wrap justify-center lg:gap-28 gap-2 gap-y-4"*/}
+                    <div className='mx-auto place-items-center'>
+                        <div className='grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] lg:gap-20 gap-4 w-[]'>
+                            {sortedCompetences.map((comp, index) => {
+                                return <div className='flex justify-center'><CompetenceCard comp={comp} key={index} isFirst={index === 0} /></div>
+                            })}
+                        </div>
                     </div>
                 </div>
             </section>
